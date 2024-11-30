@@ -3,6 +3,8 @@ class_name Player extends CharacterBody2D
 var move_speed : float = 100.0
 var jump_force : float = 200.0
 
+var score : int = 0
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
@@ -25,3 +27,6 @@ func _physics_process(delta: float) -> void:
 
 func game_over() -> void:
 	get_tree().reload_current_scene()
+
+func add_score(amount: int) -> void:
+	score +=  amount
