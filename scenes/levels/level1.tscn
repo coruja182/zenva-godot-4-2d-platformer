@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://b5cbl2tthm00f"]
+[gd_scene load_steps=7 format=4 uid="uid://b5cbl2tthm00f"]
 
 [ext_resource type="TileSet" uid="uid://scoxhsjkluy" path="res://tileset.tres" id="1_m5n8p"]
 [ext_resource type="PackedScene" uid="uid://itp6d0ju1nvk" path="res://characters/player.tscn" id="2_l76mt"]
 [ext_resource type="PackedScene" uid="uid://baarjt4xtiy0t" path="res://characters/enemy_bat.tscn" id="3_twdfp"]
 [ext_resource type="PackedScene" uid="uid://cqw8u4jepagma" path="res://scenes/common/spike/spike.tscn" id="4_8ll4m"]
 [ext_resource type="PackedScene" uid="uid://ieku5gqsp430" path="res://scenes/common/coin/coin.tscn" id="5_orsq1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_easel"]
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -14,6 +19,10 @@ tile_set = ExtResource("1_m5n8p")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_l76mt")]
+
+[node name="ScoreText" parent="Player/CanvasLayer" index="0"]
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_easel")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -28,4 +37,29 @@ move_direction = Vector2(0, -50)
 
 [node name="Spike" parent="." instance=ExtResource("4_8ll4m")]
 
-[node name="Coin" parent="." instance=ExtResource("5_orsq1")]
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_orsq1")]
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(-29, -12)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(63, -12)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(135, -46)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(207, -46)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(225, -46)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(243, -46)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("5_orsq1")]
+position = Vector2(297, -46)
+
+[editable path="Player"]

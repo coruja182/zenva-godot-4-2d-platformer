@@ -5,6 +5,8 @@ var jump_force : float = 200.0
 
 var score : int = 0
 
+@onready var score_text: Label = $CanvasLayer/ScoreText
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
@@ -23,6 +25,8 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.y > 100:
 		game_over()
+	
+	score_text.text = "Score: %s" % score
 
 
 func game_over() -> void:
